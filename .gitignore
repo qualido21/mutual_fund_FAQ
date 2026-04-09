@@ -24,3 +24,4 @@ vector_store/
 
 # OS
 .DS_Store
+.vercel

@@ -1,31 +1,26 @@
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import './globals.css'
 
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
+
 export const metadata: Metadata = {
-  title: 'Mutual Fund FAQ — Groww',
+  title: 'Mutual Fund FAQ',
   description: 'Facts-only mutual fund information assistant. Official sources only.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-gray-50 flex flex-col">
-        {/* Disclaimer — always visible */}
-        <div className="bg-amber-50 border-b border-amber-200 px-4 py-2 text-xs text-amber-800 text-center">
-          This tool provides <strong>factual information only</strong> and is{' '}
-          <strong>not investment advice</strong>. Consult a SEBI-registered financial
-          advisor before investing. Data sourced from official AMC, AMFI, and SEBI documents.
-        </div>
-
+    <html lang="en" className={inter.className}>
+      <head>
+        {/* Material Symbols — icon font, not supported by next/font */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
+      </head>
+      <body className="min-h-screen bg-[#f8f9fa]">
         {children}
-
-        {/* Footer */}
-        <footer className="mt-auto border-t border-gray-200 py-3 text-center text-xs text-gray-400">
-          Data from official AMC · AMFI · SEBI sources only ·{' '}
-          <a href="/sources" className="underline hover:text-gray-600">
-            View all sources
-          </a>
-        </footer>
       </body>
     </html>
   )

@@ -1,18 +1,27 @@
 import type OpenAI from 'openai'
-import { ChromaClient, IncludeEnum } from 'chromadb'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import type { Chunk } from './assembler'
 
 const EMBED_MODEL      = 'text-embedding-3-small'
 const EMBED_DIMENSIONS = 1536
-const COLLECTION_NAME  = 'mutual-fund-faq'
 const TOP_K            = 5
 const SIMILARITY_FLOOR = 0.60
-const APPROVED_SOURCES = ['amfi', 'amc', 'sebi']
+
+interface MatchChunkRow {
+  chunk_id:    string
+  text:        string
+  source_url:  string
+  source_type: string
+  scheme_name: string
+  fact_types:  string
+  fetched_at:  string
+  similarity:  number
+}
 
 export async function retrieve(
   query: string,
   openai: OpenAI,
-  chroma: ChromaClient,
+  supabase: SupabaseClient,
 ): Promise<Chunk[]> {
   // Embed the query
   const embResp = await openai.embeddings.create({
@@ -22,46 +31,23 @@ export async function retrieve(
   })
   const queryEmbedding = embResp.data[0].embedding
 
-  // Get collection
-  const collection = await chroma.getCollection({ name: COLLECTION_NAME })
+  // PostgREST requires vector passed as a string e.g. "[0.1,0.2,...]"
+  const { data, error } = await supabase.rpc('match_chunks', {
+    query_embedding:  `[${queryEmbedding.join(',')}]`,
+    match_count:      TOP_K,
+    match_threshold:  SIMILARITY_FLOOR,
+  })
 
-  // Query with source-type filter; fall back without filter if it fails
-  let results
-  try {
-    results = await collection.query({
-      queryEmbeddings: [queryEmbedding],
-      nResults: TOP_K,
-      where: { source_type: { $in: APPROVED_SOURCES } },
-      include: [IncludeEnum.metadatas, IncludeEnum.distances, IncludeEnum.documents],
-    })
-  } catch {
-    results = await collection.query({
-      queryEmbeddings: [queryEmbedding],
-      nResults: TOP_K,
-      include: [IncludeEnum.metadatas, IncludeEnum.distances, IncludeEnum.documents],
-    })
-  }
+  if (error) throw new Error(`Supabase retrieval error: ${error.message}`)
+  if (!data || (data as MatchChunkRow[]).length === 0) return []
 
-  const chunks: Chunk[] = []
-  const metadatas  = results.metadatas[0]  ?? []
-  const distances  = results.distances[0]  ?? []
-  const documents  = results.documents[0]  ?? []
-
-  for (let i = 0; i < metadatas.length; i++) {
-    const similarity = 1 - (distances[i] ?? 1)
-    if (similarity < SIMILARITY_FLOOR) continue
-
-    const meta = metadatas[i] ?? {}
-    chunks.push({
-      text:        (meta['text'] as string) || (documents[i] ?? ''),
-      similarity:  Math.round(similarity * 10000) / 10000,
-      sourceUrl:   (meta['source_url']  as string) ?? '',
-      schemeName:  (meta['scheme_name'] as string) ?? '',
-      factTypes:   (meta['fact_types']  as string) ?? '',
-      sourceType:  (meta['source_type'] as string) ?? '',
-      fetchedAt:   (meta['fetched_at']  as string) ?? '',
-    })
-  }
-
-  return chunks // already sorted by similarity desc
+  return (data as MatchChunkRow[]).map(row => ({
+    text:       row.text,
+    similarity: Math.round(row.similarity * 10000) / 10000,
+    sourceUrl:  row.source_url  ?? '',
+    schemeName: row.scheme_name ?? '',
+    factTypes:  row.fact_types  ?? '',
+    sourceType: row.source_type ?? '',
+    fetchedAt:  row.fetched_at  ?? '',
+  }))
 }

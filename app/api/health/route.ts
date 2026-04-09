@@ -1,4 +1,4 @@
-import { getChroma } from '@/lib/clients'
+import { getSupabase } from '@/lib/clients'
 
 export async function GET(): Promise<Response> {
   const status: Record<string, string> = {}
@@ -6,20 +6,18 @@ export async function GET(): Promise<Response> {
   // OpenAI — just check the key is present
   status.openai = process.env.OPENAI_API_KEY ? 'configured' : 'missing_key'
 
-  // ChromaDB — try a heartbeat
+  // Supabase — try a lightweight RPC to verify connectivity and table existence
   try {
-    const chroma = getChroma()
-    await chroma.heartbeat()
-    const collections = await chroma.listCollections()
-    const hasFaq = collections.some(
-      (c: { name: string }) => c.name === 'mutual-fund-faq'
-    )
-    status.chroma = hasFaq ? 'ok' : 'collection_missing'
-  } catch {
-    status.chroma = 'unreachable'
+    const supabase = getSupabase()
+    const { error } = await supabase
+      .from('mutual_fund_chunks')
+      .select('chunk_id', { count: 'exact', head: true })
+    status.supabase = error ? `error: ${error.message}` : 'ok'
+  } catch (e) {
+    status.supabase = `unreachable: ${e instanceof Error ? e.message : e}`
   }
 
-  const healthy = status.openai === 'configured' && status.chroma === 'ok'
+  const healthy = status.openai === 'configured' && status.supabase === 'ok'
 
   return Response.json(
     { status: healthy ? 'ok' : 'degraded', services: status, timestamp: new Date().toISOString() },

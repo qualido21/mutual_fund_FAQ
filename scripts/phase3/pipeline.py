@@ -33,7 +33,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sanitizer  import sanitize
 from classifier import classify
 from rewriter   import rewrite
-from retriever  import retrieve, get_collection
+from retriever  import retrieve, get_supabase_client
 from assembler  import assemble
 
 # Phase 4 generator (optional — imported lazily so Phase 3 works standalone)
@@ -90,8 +90,8 @@ class Pipeline:
     def __init__(self, verbose: bool = False, generate: bool = True):
         self.verbose = verbose
         self._do_generate = generate and _GENERATOR_AVAILABLE
-        self._openai  = None
-        self._collection = None
+        self._openai   = None
+        self._supabase = None
 
     # --- lazy init ---
 
@@ -105,10 +105,10 @@ class Pipeline:
             self._openai = OpenAI(api_key=key)
         return self._openai
 
-    def _get_collection(self):
-        if self._collection is None:
-            self._collection = get_collection()
-        return self._collection
+    def _get_supabase(self):
+        if self._supabase is None:
+            self._supabase = get_supabase_client()
+        return self._supabase
 
     # --- pipeline steps ---
 
@@ -142,8 +142,8 @@ class Pipeline:
                 "message": REFUSAL_MESSAGES.get(reason, REFUSAL_MESSAGES["empty"]),
             }
 
-        openai  = self._get_openai()
-        collection = self._get_collection()
+        openai    = self._get_openai()
+        supabase  = self._get_supabase()
 
         # Step 2 — Classify intent
         intent = classify(sanitized.clean, openai)
@@ -166,7 +166,7 @@ class Pipeline:
         self._log("rewrite", f'"{sanitized.clean}" → "{rewritten}"')
 
         # Step 4 — Retrieve
-        chunks = retrieve(rewritten, openai, collection)
+        chunks = retrieve(rewritten, openai, supabase)
         self._log("retrieve", f"{len(chunks)} chunks above similarity floor")
         if not chunks:
             return {

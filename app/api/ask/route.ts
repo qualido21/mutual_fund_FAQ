@@ -1,5 +1,5 @@
 import { runPipeline } from '@/lib/pipeline'
-import { getOpenAI, getChroma } from '@/lib/clients'
+import { getOpenAI, getSupabase } from '@/lib/clients'
 
 export async function POST(request: Request): Promise<Response> {
   let question: string
@@ -15,7 +15,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    const result = await runPipeline(question, getOpenAI(), getChroma())
+    const result = await runPipeline(question, getOpenAI(), getSupabase())
 
     // No PII in logs — log only metadata, never raw question
     console.log(JSON.stringify({

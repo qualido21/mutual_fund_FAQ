@@ -1,9 +1,9 @@
 """
 Vector Retriever — Phase 3
 Embeds the query with text-embedding-3-small and retrieves top-K chunks
-from ChromaDB, filtered to approved source types (amfi, amc, sebi).
+from Supabase pgvector via the match_chunks RPC function.
 
-Threshold: similarity > 0.60 (cosine distance < 0.40)
+Threshold: similarity > 0.60
   Rationale: Natural-language questions vs. structured PDF/KIM chunks have an
   inherent semantic gap. 0.60 is the validated floor for this corpus.
 """
@@ -16,33 +16,36 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
 EMBED_MODEL        = "text-embedding-3-small"
 EMBED_DIMENSIONS   = 1536
-COLLECTION_NAME    = "mutual-fund-faq"
 TOP_K              = 5          # retrieve top-5, assembler uses top-3
-SIMILARITY_FLOOR   = 0.60       # discard chunks below this similarity
+SIMILARITY_FLOOR   = 0.60       # enforced in SQL via match_chunks function
 APPROVED_SOURCES   = ["amfi", "amc", "sebi"]
 
 
-def get_collection():
-    """Return the ChromaDB collection (persistent client)."""
-    import chromadb
-    vector_store = PROJECT_ROOT / "vector_store"
-    if not vector_store.exists():
-        print("ERROR: vector_store/ not found — run embed_corpus.py first")
-        sys.exit(1)
-    client = chromadb.PersistentClient(path=str(vector_store))
+def get_supabase_client():
+    """Return a Supabase client using env vars."""
     try:
-        return client.get_collection(COLLECTION_NAME)
-    except Exception:
-        print(f"ERROR: Collection '{COLLECTION_NAME}' not found — run embed_corpus.py first")
+        from supabase import create_client
+    except ImportError:
+        print("ERROR: supabase package not installed. Run: pip install supabase")
         sys.exit(1)
 
+    url = os.environ.get("SUPABASE_URL")
+    key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+    if not url:
+        print("ERROR: SUPABASE_URL not set")
+        sys.exit(1)
+    if not key:
+        print("ERROR: SUPABASE_SERVICE_ROLE_KEY not set")
+        sys.exit(1)
+    return create_client(url, key)
 
-def retrieve(query: str, openai_client, collection, top_k: int = TOP_K) -> list[dict]:
+
+def retrieve(query: str, openai_client, supabase_client, top_k: int = TOP_K) -> list:
     """
-    Embed the query and retrieve top-K chunks from ChromaDB.
+    Embed the query and retrieve top-K chunks via Supabase match_chunks RPC.
 
     Returns a list of chunk dicts sorted by similarity descending.
-    Only chunks above SIMILARITY_FLOOR are returned.
+    Only chunks above SIMILARITY_FLOOR are returned (enforced in SQL).
     Each dict has keys: text, similarity, source_url, scheme_name,
                         fact_types, source_type, fetched_at.
     """
@@ -53,40 +56,25 @@ def retrieve(query: str, openai_client, collection, top_k: int = TOP_K) -> list[
         dimensions=EMBED_DIMENSIONS,
     ).data[0].embedding
 
-    # Query ChromaDB — filter to approved source types only
-    try:
-        results = collection.query(
-            query_embeddings=[embedding],
-            n_results=top_k,
-            include=["metadatas", "distances", "documents"],
-            where={"source_type": {"$in": APPROVED_SOURCES}},
-        )
-    except Exception:
-        # ChromaDB where-filter fails if a metadata field is missing; fall back without filter
-        results = collection.query(
-            query_embeddings=[embedding],
-            n_results=top_k,
-            include=["metadatas", "distances", "documents"],
-        )
+    # Call match_chunks RPC — threshold + source_type filter applied in SQL
+    response = supabase_client.rpc("match_chunks", {
+        "query_embedding":  embedding,
+        "match_count":      top_k,
+        "match_threshold":  SIMILARITY_FLOOR,
+    }).execute()
+
+    rows = response.data or []
 
     chunks = []
-    for meta, dist, doc in zip(
-        results["metadatas"][0],
-        results["distances"][0],
-        results["documents"][0],
-    ):
-        similarity = 1.0 - dist
-        if similarity < SIMILARITY_FLOOR:
-            continue
+    for row in rows:
         chunks.append({
-            "text":        meta.get("text") or doc or "",
-            "similarity":  round(similarity, 4),
-            "source_url":  meta.get("source_url", ""),
-            "scheme_name": meta.get("scheme_name", ""),
-            "fact_types":  meta.get("fact_types", ""),
-            "source_type": meta.get("source_type", ""),
-            "fetched_at":  meta.get("fetched_at", ""),
-            "source_id":   meta.get("source_id", ""),
+            "text":        row.get("text", ""),
+            "similarity":  round(float(row.get("similarity", 0)), 4),
+            "source_url":  row.get("source_url", ""),
+            "scheme_name": row.get("scheme_name", ""),
+            "fact_types":  row.get("fact_types", ""),
+            "source_type": row.get("source_type", ""),
+            "fetched_at":  row.get("fetched_at", ""),
         })
 
-    return chunks  # already sorted by similarity desc (ChromaDB returns nearest first)
+    return chunks  # already sorted by similarity desc (ORDER BY in SQL)

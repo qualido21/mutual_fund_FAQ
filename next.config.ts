@@ -1,7 +1,5 @@
 import type { NextConfig } from 'next'
 
-const config: NextConfig = {
-  serverExternalPackages: ['chromadb'],
-}
+const config: NextConfig = {}
 
 export default config

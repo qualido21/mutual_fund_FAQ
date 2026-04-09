@@ -10,6 +10,7 @@
     "chroma": "chroma run --path ./vector_store"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.103.0",
     "@tailwindcss/postcss": "^4.2.2",
     "chromadb": "^3.4.3",
     "next": "^16.2.3",

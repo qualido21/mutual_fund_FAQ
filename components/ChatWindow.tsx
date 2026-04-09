@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -30,63 +31,81 @@ interface RefusalMessage {
 type Message = UserMessage | AnswerMessage | RefusalMessage
 
 // ---------------------------------------------------------------------------
-// Sub-components
+// Sample questions
 // ---------------------------------------------------------------------------
 
 const SAMPLE_QUESTIONS = [
-  'What is the exit load for Mirae Asset Large Cap Fund?',
-  'What is the lock-in period for Mirae Asset ELSS Tax Saver Fund?',
-  'What is the minimum SIP amount for Mirae Asset ELSS?',
-  'What is the benchmark index for Mirae Asset Liquid Fund?',
-  'What is the riskometer rating of Mirae Asset Flexi Cap Fund?',
+  { label: 'What is NAV?', sub: 'Learn the basics', icon: 'trending_up' },
+  { label: 'How do exit loads work?', sub: 'Redemption rules', icon: 'account_balance' },
+  { label: 'Is ELSS the same as tax saver fund?', sub: 'Tax efficiency', icon: 'savings' },
+  { label: 'What is a lock-in period?', sub: 'Investment duration', icon: 'lock' },
+  { label: 'Direct vs Regular plan difference?', sub: 'Expense ratio', icon: 'compare_arrows' },
 ]
+
+// ---------------------------------------------------------------------------
+// Sub-components
+// ---------------------------------------------------------------------------
 
 function UserBubble({ text }: { text: string }) {
   return (
-    <div className="flex justify-end">
-      <div className="max-w-[75%] rounded-2xl rounded-tr-sm bg-blue-600 px-4 py-2.5 text-sm text-white shadow-sm">
+    <div className="flex flex-col items-end w-full">
+      <div className="bg-blue-700 text-white px-5 py-3 rounded-xl rounded-br-sm font-medium shadow-md shadow-blue-900/10 max-w-[80%]">
         {text}
       </div>
     </div>
   )
 }
 
+function AssistantAvatar() {
+  return (
+    <div className="flex items-center gap-2 mb-2 ml-1">
+      <div className="w-6 h-6 bg-blue-900 rounded-full flex items-center justify-center shrink-0">
+        <span className="material-symbols-outlined text-white" style={{ fontSize: 14, fontVariationSettings: "'FILL' 1" }}>auto_awesome</span>
+      </div>
+      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Mutual Fund FAQ</span>
+    </div>
+  )
+}
+
 function AnswerCard({ msg }: { msg: AnswerMessage }) {
   return (
-    <div className="flex justify-start">
-      <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-gray-200 bg-white px-4 py-3 shadow-sm">
-        <p className="text-sm text-gray-800 whitespace-pre-line leading-relaxed">{msg.text}</p>
-        {msg.sourceUrl && (
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-blue-600 border-t border-gray-100 pt-2">
-            <svg className="h-3 w-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            <a href={msg.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:underline truncate max-w-[280px]">
-              Official Source
-            </a>
-            {msg.lastUpdated && (
-              <span className="text-gray-400">· {msg.lastUpdated.slice(0, 10)}</span>
-            )}
-          </div>
-        )}
+    <div className="flex flex-col items-start max-w-[88%]">
+      <AssistantAvatar />
+      <div className="bg-white border border-gray-100 p-5 rounded-xl rounded-bl-sm text-gray-800 leading-relaxed shadow-sm text-sm whitespace-pre-line">
+        {msg.text}
       </div>
+      {msg.sourceUrl && (
+        <div className="mt-2 ml-1 flex flex-col gap-0.5">
+          <a href={msg.sourceUrl} target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-blue-600 font-medium text-xs hover:underline">
+            <span className="material-symbols-outlined" style={{ fontSize: 13 }}>link</span>
+            Official Source
+          </a>
+          {msg.lastUpdated && (
+            <span className="text-[10px] uppercase tracking-tighter text-slate-400 font-bold ml-5">
+              Last updated: {msg.lastUpdated.slice(0, 10)}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   )
 }
 
 function RefusalCard({ msg }: { msg: RefusalMessage }) {
-  const isOOScope = msg.reason === 'out_of_scope'
   const isPii     = msg.reason?.startsWith('pii_')
+  const isOOScope = msg.reason === 'out_of_scope'
   return (
-    <div className="flex justify-start">
-      <div className={`max-w-[85%] rounded-2xl rounded-tl-sm border px-4 py-3 text-sm shadow-sm ${
+    <div className="flex flex-col items-start max-w-[88%]">
+      <AssistantAvatar />
+      <div className={`p-5 rounded-xl rounded-bl-sm text-sm shadow-sm border ${
         isPii
           ? 'border-red-200 bg-red-50 text-red-700'
           : isOOScope
           ? 'border-gray-200 bg-gray-50 text-gray-600'
-          : 'border-orange-200 bg-orange-50 text-orange-700'
+          : 'border-amber-200 bg-amber-50 text-amber-700'
       }`}>
-        <p>{msg.message}</p>
+        {msg.message}
       </div>
     </div>
   )
@@ -94,8 +113,9 @@ function RefusalCard({ msg }: { msg: RefusalMessage }) {
 
 function TypingIndicator() {
   return (
-    <div className="flex justify-start">
-      <div className="rounded-2xl rounded-tl-sm border border-gray-200 bg-white px-4 py-3 shadow-sm">
+    <div className="flex flex-col items-start max-w-[88%]">
+      <AssistantAvatar />
+      <div className="bg-white border border-gray-100 px-5 py-4 rounded-xl rounded-bl-sm shadow-sm">
         <div className="flex gap-1 items-center h-4">
           {[0, 1, 2].map(i => (
             <span key={i} className="h-2 w-2 rounded-full bg-gray-400 animate-bounce"
@@ -108,7 +128,7 @@ function TypingIndicator() {
 }
 
 // ---------------------------------------------------------------------------
-// Main chat window
+// Main
 // ---------------------------------------------------------------------------
 
 export default function ChatWindow() {
@@ -160,59 +180,91 @@ export default function ChatWindow() {
   const showSamples = messages.length === 0 && !loading
 
   return (
-    <div className="flex flex-col flex-1 max-w-2xl w-full mx-auto px-4 py-6">
-      {/* Header */}
-      <div className="mb-6 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Mutual Fund FAQ</h1>
-        <p className="mt-1 text-sm text-gray-500">
-          Ask factual questions about Mirae Asset funds · Official sources only
+    <div className="flex flex-col h-screen bg-[#f8f9fa]">
+      {/* Fixed header */}
+      <header className="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm">
+        <h1 className="text-xl font-bold tracking-tight text-blue-900">Mutual Fund FAQ</h1>
+        <Link href="/sources"
+          className="bg-blue-700 text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-blue-800 transition-colors">
+          View Sources
+        </Link>
+      </header>
+
+      {/* Amber disclaimer */}
+      <div className="fixed top-16 w-full z-40 bg-amber-50 border-b border-amber-200 px-6 py-2.5 flex items-center justify-center gap-2 text-amber-800">
+        <span className="material-symbols-outlined text-amber-600" style={{ fontSize: 18 }}>warning</span>
+        <p className="text-xs font-medium">
+          This tool provides general information only. Not financial advice. Consult a SEBI-registered advisor before investing.
         </p>
       </div>
 
-      {/* Message list */}
-      <div className="flex-1 space-y-4 overflow-y-auto min-h-[300px]">
-        {showSamples && (
-          <div className="space-y-3">
-            <p className="text-xs text-center text-gray-400 uppercase tracking-wide">Try asking</p>
-            {SAMPLE_QUESTIONS.map(q => (
-              <button key={q} onClick={() => submit(q)}
-                className="w-full text-left rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 shadow-sm hover:border-blue-300 hover:bg-blue-50 transition-colors">
-                {q}
-              </button>
-            ))}
-          </div>
-        )}
+      {/* Scrollable chat area */}
+      <main className="flex-1 overflow-y-auto pt-32 pb-36">
+        <div className="max-w-3xl mx-auto w-full px-6 lg:px-12 space-y-8">
 
-        {messages.map((msg, i) => {
-          if (msg.role === 'user') return <UserBubble key={i} text={msg.text} />
-          if (msg.type === 'answer') return <AnswerCard key={i} msg={msg} />
-          return <RefusalCard key={i} msg={msg} />
-        })}
+          {/* Sample question cards */}
+          {showSamples && (
+            <>
+              <h2 className="text-2xl font-bold text-blue-900 tracking-tight mt-6">How can I help your investment journey?</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                {SAMPLE_QUESTIONS.slice(0, 3).map(q => (
+                  <button key={q.label} onClick={() => submit(q.label)}
+                    className="bg-white border border-gray-100 p-5 rounded-xl text-left hover:bg-blue-50 hover:border-blue-200 transition-colors group shadow-sm">
+                    <span className="material-symbols-outlined text-blue-700 mb-2 block" style={{ fontSize: 24 }}>{q.icon}</span>
+                    <p className="font-semibold text-gray-900 text-sm">{q.label}</p>
+                    <p className="text-[11px] text-slate-400 mt-1 uppercase tracking-tighter">{q.sub}</p>
+                  </button>
+                ))}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {SAMPLE_QUESTIONS.slice(3).map(q => (
+                  <button key={q.label} onClick={() => submit(q.label)}
+                    className="bg-white border border-gray-100 p-5 rounded-xl text-left hover:bg-blue-50 hover:border-blue-200 transition-colors group shadow-sm">
+                    <span className="material-symbols-outlined text-blue-700 mb-2 block" style={{ fontSize: 24 }}>{q.icon}</span>
+                    <p className="font-semibold text-gray-900 text-sm">{q.label}</p>
+                    <p className="text-[11px] text-slate-400 mt-1 uppercase tracking-tighter">{q.sub}</p>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
 
-        {loading && <TypingIndicator />}
-        <div ref={bottomRef} />
-      </div>
+          {/* Messages */}
+          {messages.map((msg, i) => {
+            if (msg.role === 'user') return <UserBubble key={i} text={msg.text} />
+            if (msg.type === 'answer') return <AnswerCard key={i} msg={msg} />
+            return <RefusalCard key={i} msg={msg} />
+          })}
 
-      {/* Input */}
-      <div className="mt-4">
-        <form onSubmit={e => { e.preventDefault(); submit(input) }}
-          className="flex gap-2 rounded-xl border border-gray-300 bg-white p-2 shadow-sm focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-100">
-          <input
-            type="text"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            placeholder="Ask about expense ratio, exit load, SIP, lock-in…"
-            disabled={loading}
-            className="flex-1 bg-transparent px-2 py-1 text-sm text-gray-800 outline-none placeholder:text-gray-400 disabled:opacity-50"
-          />
-          <button type="submit" disabled={loading || !input.trim()}
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
-            Ask
-          </button>
-        </form>
-        <p className="mt-2 text-center text-xs text-gray-400">
-          Factual information only · Not investment advice
-        </p>
+          {loading && <TypingIndicator />}
+          <div ref={bottomRef} />
+        </div>
+      </main>
+
+      {/* Fixed bottom input */}
+      <div className="fixed bottom-0 w-full z-40 bg-white/60 backdrop-blur-xl border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-6 lg:px-12 py-4">
+          <form onSubmit={e => { e.preventDefault(); submit(input) }}
+            className="relative flex items-center">
+            <input
+              type="text"
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              placeholder="Ask about mutual funds…"
+              disabled={loading}
+              className="w-full bg-white border border-gray-200 rounded-full py-3.5 px-6 pr-28 shadow-lg shadow-blue-900/5 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-800 placeholder:text-gray-400 disabled:opacity-50 transition-all"
+            />
+            <button type="submit" disabled={loading || !input.trim()}
+              className="absolute right-2 bg-blue-700 text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-blue-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-1.5">
+              Ask
+              <span className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>send</span>
+            </button>
+          </form>
+          <p className="mt-2 text-center text-[10px] uppercase tracking-widest text-slate-400">
+            Official AMC · AMFI · SEBI sources only ·{' '}
+            <Link href="/sources" className="hover:text-blue-500 transition-colors">View all sources</Link>
+          </p>
+        </div>
       </div>
     </div>
   )

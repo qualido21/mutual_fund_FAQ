@@ -1,9 +1,10 @@
 /**
- * Singleton clients for OpenAI and ChromaDB.
+ * Singleton clients for OpenAI and Supabase.
  * Re-used across requests to avoid cold-start overhead.
  */
 import OpenAI from 'openai'
-import { ChromaClient } from 'chromadb'
+import { createClient } from '@supabase/supabase-js'
+import type { SupabaseClient } from '@supabase/supabase-js'
 
 // ---------------------------------------------------------------------------
 // OpenAI
@@ -21,20 +22,18 @@ export function getOpenAI(): OpenAI {
 }
 
 // ---------------------------------------------------------------------------
-// ChromaDB
+// Supabase
 // ---------------------------------------------------------------------------
 
-let _chroma: ChromaClient | null = null
+let _supabase: SupabaseClient | null = null
 
-export function getChroma(): ChromaClient {
-  if (!_chroma) {
-    const url = process.env.CHROMA_URL ?? 'http://localhost:8000'
-    const parsed = new URL(url)
-    _chroma = new ChromaClient({
-      host: parsed.hostname,
-      port: parseInt(parsed.port || '8000', 10),
-      ssl: parsed.protocol === 'https:',
-    })
+export function getSupabase(): SupabaseClient {
+  if (!_supabase) {
+    const url = process.env.SUPABASE_URL
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url) throw new Error('SUPABASE_URL is not set')
+    if (!key) throw new Error('SUPABASE_SERVICE_ROLE_KEY is not set')
+    _supabase = createClient(url, key)
   }
-  return _chroma
+  return _supabase
 }

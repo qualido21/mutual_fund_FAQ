@@ -2,7 +2,7 @@
  * Full RAG pipeline: Sanitize → Classify → Rewrite → Retrieve → Assemble → Generate
  */
 import type OpenAI from 'openai'
-import type { ChromaClient } from 'chromadb'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { sanitize }  from './sanitizer'
 import { classify }  from './classifier'
 import { rewrite }   from './rewriter'
@@ -42,7 +42,7 @@ export interface PipelineResult {
 export async function runPipeline(
   rawQuery: string,
   openai: OpenAI,
-  chroma: ChromaClient,
+  supabase: SupabaseClient,
 ): Promise<PipelineResult> {
   // 1. Sanitize
   const sanitized = sanitize(rawQuery)
@@ -62,7 +62,7 @@ export async function runPipeline(
   const rewritten = await rewrite(sanitized.clean, openai)
 
   // 4. Retrieve
-  const chunks = await retrieve(rewritten, openai, chroma)
+  const chunks = await retrieve(rewritten, openai, supabase)
   if (chunks.length === 0)
     return { type: 'no_context', message: REFUSAL_MESSAGES.no_context }
 
