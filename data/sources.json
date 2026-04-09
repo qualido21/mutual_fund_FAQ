@@ -11,7 +11,7 @@
       "expense_ratio",
       "min_sip"
     ],
-    "fetched_at": "2026-04-08T20:10:30.078428+00:00",
+    "fetched_at": "2026-04-09T19:47:11.750297+00:00",
     "content_hash": "sha256:4574d2c286472b49c5aaa3e11c0431423faa5fbda89d2877e01d1e6f40864dae"
   },
   {
@@ -25,7 +25,7 @@
       "expense_ratio",
       "regulatory"
     ],
-    "fetched_at": "2026-04-08T20:10:32.288189+00:00",
+    "fetched_at": "2026-04-09T19:47:11.750785+00:00",
     "content_hash": "sha256:24e47060253b106066621f2a7828de59536d25594545ebcec8e24066a13bac17"
   },
   {
@@ -38,7 +38,7 @@
     "fact_types": [
       "general"
     ],
-    "fetched_at": "2026-04-08T20:10:34.562519+00:00",
+    "fetched_at": "2026-04-09T19:47:11.751243+00:00",
     "content_hash": "sha256:03b0cd09c7e93e6e4c14d50334fe9b11d92880a26f9e09d650f54504cda50c23"
   },
   {
@@ -85,9 +85,8 @@
       "riskometer",
       "category"
     ],
-    "fetched_at": "2026-04-08T20:10:43.177914+00:00",
-    "content_hash": "sha256:4347b51b12502105a1b7992668e7c8f5eb20ebe39aa1f5f4f271c43a30eebcfc",
-    "fetch_warning": "empty_parsed_text"
+    "fetched_at": "2026-04-09T19:47:11.751458+00:00",
+    "content_hash": "sha256:4347b51b12502105a1b7992668e7c8f5eb20ebe39aa1f5f4f271c43a30eebcfc"
   },
   {
     "id": "src_007",
@@ -105,9 +104,8 @@
       "riskometer",
       "category"
     ],
-    "fetched_at": "2026-04-08T20:10:45.767526+00:00",
-    "content_hash": "sha256:006f6dcd221a9728af57f3a5487d6502f95e4e06508af546f3f51a1a5e042cc3",
-    "fetch_warning": "empty_parsed_text"
+    "fetched_at": "2026-04-09T19:47:11.751627+00:00",
+    "content_hash": "sha256:006f6dcd221a9728af57f3a5487d6502f95e4e06508af546f3f51a1a5e042cc3"
   },
   {
     "id": "src_008",
@@ -125,9 +123,8 @@
       "riskometer",
       "category"
     ],
-    "fetched_at": "2026-04-08T20:10:48.325769+00:00",
-    "content_hash": "sha256:a926db0c2eb4fd268ce30f449cd23e35c54f6c1b6be1f8ef1cd3e7ca8daed2bb",
-    "fetch_warning": "empty_parsed_text"
+    "fetched_at": "2026-04-09T19:47:11.751798+00:00",
+    "content_hash": "sha256:a926db0c2eb4fd268ce30f449cd23e35c54f6c1b6be1f8ef1cd3e7ca8daed2bb"
   },
   {
     "id": "src_009",
@@ -145,9 +142,8 @@
       "riskometer",
       "category"
     ],
-    "fetched_at": "2026-04-08T20:10:50.864879+00:00",
-    "content_hash": "sha256:fd67e477e4541dece357d4e290672151836002bbcb46e2459ce5d5efc96cc7b6",
-    "fetch_warning": "empty_parsed_text"
+    "fetched_at": "2026-04-09T19:47:11.751945+00:00",
+    "content_hash": "sha256:fd67e477e4541dece357d4e290672151836002bbcb46e2459ce5d5efc96cc7b6"
   },
   {
     "id": "src_010",
@@ -300,7 +296,7 @@
     "fact_types": [
       "general"
     ],
-    "fetched_at": "2026-04-08T20:13:19.668252+00:00",
+    "fetched_at": "2026-04-09T19:47:11.752413+00:00",
     "content_hash": "sha256:e671235ac8afb5989b99353050de18e0f0ad3f290145a208650beb2e8963982c"
   }
 ]
