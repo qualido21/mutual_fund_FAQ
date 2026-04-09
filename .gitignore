@@ -1,0 +1,26 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Python
+corpus/raw/
+corpus/cleaned/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Next.js
+.next/
+out/
+
+# Node
+node_modules/
+
+# Vector store data (local only)
+vector_store/
+
+# OS
+.DS_Store

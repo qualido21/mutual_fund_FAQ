@@ -1,0 +1,306 @@
+[
+  {
+    "id": "src_001",
+    "url": "https://www.amfiindia.com/investor",
+    "type": "html",
+    "source_type": "amfi",
+    "scheme": null,
+    "description": "AMFI investor corner — mutual fund basics, SIP, KYC, expense ratio, types of schemes, how to invest/redeem",
+    "fact_types": [
+      "general",
+      "expense_ratio",
+      "min_sip"
+    ],
+    "fetched_at": "2026-04-08T20:10:30.078428+00:00",
+    "content_hash": "sha256:4574d2c286472b49c5aaa3e11c0431423faa5fbda89d2877e01d1e6f40864dae"
+  },
+  {
+    "id": "src_002",
+    "url": "https://www.amfiindia.com/ter-of-mf-schemes",
+    "type": "html",
+    "source_type": "amfi",
+    "scheme": null,
+    "description": "AMFI — Total Expense Ratio (TER) of mutual fund schemes (search tool + regulatory limits)",
+    "fact_types": [
+      "expense_ratio",
+      "regulatory"
+    ],
+    "fetched_at": "2026-04-08T20:10:32.288189+00:00",
+    "content_hash": "sha256:24e47060253b106066621f2a7828de59536d25594545ebcec8e24066a13bac17"
+  },
+  {
+    "id": "src_003",
+    "url": "https://www.amfiindia.com/kyc",
+    "type": "html",
+    "source_type": "amfi",
+    "scheme": null,
+    "description": "AMFI — KYC (Know Your Customer) process, requirements, forms, and status check",
+    "fact_types": [
+      "general"
+    ],
+    "fetched_at": "2026-04-08T20:10:34.562519+00:00",
+    "content_hash": "sha256:03b0cd09c7e93e6e4c14d50334fe9b11d92880a26f9e09d650f54504cda50c23"
+  },
+  {
+    "id": "src_004",
+    "url": "https://investor.sebi.gov.in",
+    "type": "html",
+    "source_type": "sebi",
+    "scheme": null,
+    "description": "SEBI Investor Education portal — investor awareness, securities market basics",
+    "fact_types": [
+      "general",
+      "regulatory"
+    ],
+    "fetched_at": "2026-04-08T20:10:37.645793+00:00",
+    "content_hash": "sha256:705bc35665359b26cf6ed8035d15dc5c512598f2bb17e7576d372e933f1f3b41"
+  },
+  {
+    "id": "src_005",
+    "url": "https://www.miraeassetmf.co.in/investor-hub",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": null,
+    "description": "Mirae Asset — Investor Hub: account statement, SIP services, KYC, NAV updates, unclaimed dividends",
+    "fact_types": [
+      "statement_download",
+      "general"
+    ],
+    "fetched_at": "2026-04-08T20:10:40.507383+00:00",
+    "content_hash": "sha256:1a0b9f239abd36e1d72d1057058647aac34325a4192e4c5c15fe80e3e2d386e7"
+  },
+  {
+    "id": "src_006",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-large-cap-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Large Cap Fund",
+    "description": "Mirae Asset — Large Cap Fund scheme page: NAV, benchmark, riskometer, min SIP, fund manager",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "min_lumpsum",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-08T20:10:43.177914+00:00",
+    "content_hash": "sha256:4347b51b12502105a1b7992668e7c8f5eb20ebe39aa1f5f4f271c43a30eebcfc",
+    "fetch_warning": "empty_parsed_text"
+  },
+  {
+    "id": "src_007",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-elss-tax-saver-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset ELSS Tax Saver Fund",
+    "description": "Mirae Asset — ELSS Tax Saver Fund scheme page: lock-in 3 years, benchmark, riskometer, Sec 80C",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "lock_in",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-08T20:10:45.767526+00:00",
+    "content_hash": "sha256:006f6dcd221a9728af57f3a5487d6502f95e4e06508af546f3f51a1a5e042cc3",
+    "fetch_warning": "empty_parsed_text"
+  },
+  {
+    "id": "src_008",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/fixed-income/mirae-asset-liquid-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Liquid Fund",
+    "description": "Mirae Asset — Liquid Fund scheme page: expense ratio 0.15% Direct, benchmark Nifty Liquid Index A-I",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "min_lumpsum",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-08T20:10:48.325769+00:00",
+    "content_hash": "sha256:a926db0c2eb4fd268ce30f449cd23e35c54f6c1b6be1f8ef1cd3e7ca8daed2bb",
+    "fetch_warning": "empty_parsed_text"
+  },
+  {
+    "id": "src_009",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-flexi-cap-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Flexi Cap Fund",
+    "description": "Mirae Asset — Flexi Cap Fund scheme page: benchmark Nifty 500 TRI, min SIP ₹99",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "min_lumpsum",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-08T20:10:50.864879+00:00",
+    "content_hash": "sha256:fd67e477e4541dece357d4e290672151836002bbcb46e2459ce5d5efc96cc7b6",
+    "fetch_warning": "empty_parsed_text"
+  },
+  {
+    "id": "src_010",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/kim---mirae-asset-large-cap-fund_21112025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Large Cap Fund",
+    "description": "KIM — Mirae Asset Large Cap Fund: expense ratio, exit load, SIP amounts, lock-in, benchmark, riskometer",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "min_lumpsum",
+      "benchmark",
+      "riskometer",
+      "lock_in"
+    ],
+    "fetched_at": "2026-04-08T20:11:11.569118+00:00",
+    "content_hash": "sha256:f9e767212279d62ee416a164a95de772ec93601218316bd9b4eb2269ab32302d"
+  },
+  {
+    "id": "src_011",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/14-kim---mirae-asset-elss-tax-saver-fund_sept2025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset ELSS Tax Saver Fund",
+    "description": "KIM — Mirae Asset ELSS Tax Saver Fund: expense ratio, 3-year lock-in, Sec 80C, benchmark",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "lock_in",
+      "benchmark",
+      "riskometer"
+    ],
+    "fetched_at": "2026-04-08T20:11:32.629386+00:00",
+    "content_hash": "sha256:c962dc0ba0ae82664f68b4977abc9f8b7af4dffa5558d5b5b16c2467b9164fac"
+  },
+  {
+    "id": "src_012",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/24-kim-mirae-asset-liquid-fund_sept2025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Liquid Fund",
+    "description": "KIM — Mirae Asset Liquid Fund: expense ratio, exit load graded, benchmark, riskometer",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer"
+    ],
+    "fetched_at": "2026-04-08T20:11:53.953536+00:00",
+    "content_hash": "sha256:f74c2877180610cfc2d967e51c71bdd2c152771d0f5a3ad899e07e3a3c8017a4"
+  },
+  {
+    "id": "src_013",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/15-kim---mirae-asset-flexi-cap-fund_sept2025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Flexi Cap Fund",
+    "description": "KIM — Mirae Asset Flexi Cap Fund: expense ratio, exit load, benchmark Nifty 500 TRI",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer"
+    ],
+    "fetched_at": "2026-04-08T20:12:15.043790+00:00",
+    "content_hash": "sha256:fd71b84b6e1178a734cbad887d020908e7f23c1f16e6854fdd18936792f6cdc1"
+  },
+  {
+    "id": "src_014",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/sid/sid-mirae-asset-largecap-fund_21112025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Large Cap Fund",
+    "description": "SID — Mirae Asset Large Cap Fund: detailed scheme information, investment objective, policies",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-08T20:12:30.599311+00:00",
+    "content_hash": "sha256:fab5062ac402ae95b9b8ddeba52e9e7469dcacf5fc8e6fef9009494e95bcaa1c"
+  },
+  {
+    "id": "src_015",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/sid/14-sid---mirae-asset-elss-tax-saver-fund_sv_sept2025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset ELSS Tax Saver Fund",
+    "description": "SID — Mirae Asset ELSS Tax Saver Fund: scheme details, lock-in, tax benefits under Sec 80C",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "lock_in",
+      "benchmark",
+      "riskometer"
+    ],
+    "fetched_at": "2026-04-08T20:12:43.649032+00:00",
+    "content_hash": "sha256:9157a1448f50a567353a19d0afcfddb43de10e005e187c221d54c6bad6313085"
+  },
+  {
+    "id": "src_016",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/sid/24-sid-mirae-asset-liquid-fund_sept2025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Liquid Fund",
+    "description": "SID — Mirae Asset Liquid Fund: scheme details, risk parameters, exit load grids",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer"
+    ],
+    "fetched_at": "2026-04-08T20:12:58.048698+00:00",
+    "content_hash": "sha256:65a74b7623a976422a5dcfabd8735e01131e59cbdec4c283da2cbf574613f44e"
+  },
+  {
+    "id": "src_017",
+    "url": "https://www.miraeassetmf.co.in/docs/default-source/sid/15-sid-mirae-asset-flexi-cap-fund_sept2025.pdf",
+    "type": "pdf",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Flexi Cap Fund",
+    "description": "SID — Mirae Asset Flexi Cap Fund: scheme details, investment strategy, expense ratio",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer"
+    ],
+    "fetched_at": "2026-04-08T20:13:17.468020+00:00",
+    "content_hash": "sha256:ce66f5cd9cca60156e3ec9c293325bb73535113f71c7ce780be4f27b6c166a1b"
+  },
+  {
+    "id": "src_018",
+    "url": "https://www.amfiindia.com/net-asset-value",
+    "type": "html",
+    "source_type": "amfi",
+    "scheme": null,
+    "description": "AMFI — NAV (Net Asset Value) explanation and daily NAV lookup for all mutual fund schemes",
+    "fact_types": [
+      "general"
+    ],
+    "fetched_at": "2026-04-08T20:13:19.668252+00:00",
+    "content_hash": "sha256:e671235ac8afb5989b99353050de18e0f0ad3f290145a208650beb2e8963982c"
+  }
+]

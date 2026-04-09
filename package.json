@@ -1,0 +1,27 @@
+{
+  "name": "mutual-fund-faq",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "chroma": "chroma run --path ./vector_store"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "chromadb": "^3.4.3",
+    "next": "^16.2.3",
+    "openai": "^4.77.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5.1.0"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "passed": 8,
+  "failed": 0,
+  "tests": [
+    {
+      "test": "Factual \u2014 exit load (Large Cap)",
+      "query": "What is the exit load for Mirae Asset Large Cap Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "model": "gpt-4o-mini",
+      "source_url": "https://www.miraeassetmf.co.in/docs/default-source/sid/14-sid---mirae-asset-elss-tax-saver-fund_sv_sept2025.pdf",
+      "answer": "If redeemed within 1 year (365 days) from the date of allotment, the exit load for Mirae Asset Large Cap Fund is 1%. If redeemed after 1 year (365 days) from the date of allotment, there is no exit load. Source: https://www.miraeassetmf.co.in/docs/default-source/sid/sid-mirae-asset-largecap-fund_211",
+      "failures": []
+    },
+    {
+      "test": "Factual \u2014 lock-in (ELSS)",
+      "query": "What is the lock-in period for Mirae Asset ELSS Tax Saver Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "model": "gpt-4o-mini",
+      "source_url": "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/14-kim---mirae-asset-elss-tax-saver-fund_sept2025.pdf",
+      "answer": "The lock-in period for Mirae Asset ELSS Tax Saver Fund is 3 years. Source: https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/14-kim---mirae-asset-elss-tax-saver-fund_sept2025.pdf",
+      "failures": []
+    },
+    {
+      "test": "Factual \u2014 minimum SIP (ELSS)",
+      "query": "What is the minimum SIP amount for Mirae Asset ELSS?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "model": "gpt-4o-mini",
+      "source_url": "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/14-kim---mirae-asset-elss-tax-saver-fund_sept2025.pdf",
+      "answer": "The minimum SIP amount for Mirae Asset ELSS Tax Saver Fund is \u20b9500 for 5 installments, with multiples of \u20b9500 thereafter. Source: https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/14-kim---mirae-asset-elss-tax-saver-fund_sept2025.pdf",
+      "failures": []
+    },
+    {
+      "test": "Factual \u2014 benchmark (Liquid Fund)",
+      "query": "What is the benchmark index for Mirae Asset Liquid Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "model": "gpt-4o-mini",
+      "source_url": "https://www.miraeassetmf.co.in/docs/default-source/sid/24-sid-mirae-asset-liquid-fund_sept2025.pdf",
+      "answer": "The benchmark index for Mirae Asset Liquid Fund is the NIFTY Liquid Index A-I. Source: https://www.miraeassetmf.co.in/docs/default-source/sid/24-sid-mirae-asset-liquid-fund_sept2025.pdf",
+      "failures": []
+    },
+    {
+      "test": "Factual \u2014 riskometer (Flexi Cap)",
+      "query": "What is the riskometer rating of Mirae Asset Flexi Cap Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "model": "gpt-4o-mini",
+      "source_url": "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/15-kim---mirae-asset-flexi-cap-fund_sept2025.pdf",
+      "answer": "The riskometer rating of Mirae Asset Flexi Cap Fund is as of October 31, 2025. For the latest riskometer, investors are advised to refer to the Monthly Portfolios disclosed on the fund's website. \n\nSource: https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/15-kim---mirae-asset-f",
+      "failures": []
+    },
+    {
+      "test": "Guard rail \u2014 advisory (should I invest)",
+      "query": "Should I invest in Mirae Asset Large Cap Fund?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "advisory",
+      "model": null,
+      "source_url": null,
+      "answer": "",
+      "failures": []
+    },
+    {
+      "test": "Guard rail \u2014 PII (PAN number)",
+      "query": "My PAN is ABCDE1234F. What is the exit load?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "pii_pan",
+      "model": null,
+      "source_url": null,
+      "answer": "",
+      "failures": []
+    },
+    {
+      "test": "Guard rail \u2014 out of scope (FD rate)",
+      "query": "What is the current FD rate in SBI?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "out_of_scope",
+      "model": null,
+      "source_url": null,
+      "answer": "",
+      "failures": []
+    }
+  ]
+}

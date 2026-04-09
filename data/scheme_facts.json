@@ -1,0 +1,102 @@
+[
+  {
+    "scheme_name": "General",
+    "source_id": "src_001",
+    "source_url": "https://www.amfiindia.com/investor",
+    "source_type": "amfi",
+    "description": "AMFI investor corner — mutual fund basics, SIP, KYC, expense ratio, types of schemes, how to invest/redeem",
+    "fetched_at": "2026-04-08T20:10:30.078428+00:00",
+    "all_source_urls": [
+      "https://www.amfiindia.com/investor",
+      "https://www.amfiindia.com/ter-of-mf-schemes",
+      "https://www.amfiindia.com/kyc",
+      "https://investor.sebi.gov.in",
+      "https://www.miraeassetmf.co.in/investor-hub",
+      "https://www.amfiindia.com/net-asset-value"
+    ]
+  },
+  {
+    "scheme_name": "Mirae Asset Large Cap Fund",
+    "source_id": "src_006",
+    "source_url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-large-cap-fund",
+    "source_type": "amc",
+    "description": "Mirae Asset — Large Cap Fund scheme page: NAV, benchmark, riskometer, min SIP, fund manager",
+    "fetched_at": "2026-04-08T20:10:43.177914+00:00",
+    "expense_ratio": "2.25%",
+    "exit_load": "1%",
+    "min_sip": "99",
+    "min_lumpsum": "5,000",
+    "benchmark": "Nifty 100 TRI (Total Return index",
+    "all_source_urls": [
+      "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-large-cap-fund",
+      "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/kim---mirae-asset-large-cap-fund_21112025.pdf",
+      "https://www.miraeassetmf.co.in/docs/default-source/sid/sid-mirae-asset-largecap-fund_21112025.pdf"
+    ],
+    "category": "Large Cap Fund",
+    "riskometer": "Very High",
+    "lock_in": "None"
+  },
+  {
+    "scheme_name": "Mirae Asset ELSS Tax Saver Fund",
+    "source_id": "src_007",
+    "source_url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-elss-tax-saver-fund",
+    "source_type": "amc",
+    "description": "Mirae Asset — ELSS Tax Saver Fund scheme page: lock-in 3 years, benchmark, riskometer, Sec 80C",
+    "fetched_at": "2026-04-08T20:10:45.767526+00:00",
+    "expense_ratio": "2.25%",
+    "lock_in": "3 years (mandatory statutory lock-in under Section 80C)",
+    "benchmark": "AMFI Tier 1 Benchmark: Nifty 500 (TRI) & Tier 2 Benchmark: Nifty 200 (TRI",
+    "all_source_urls": [
+      "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-elss-tax-saver-fund",
+      "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/14-kim---mirae-asset-elss-tax-saver-fund_sept2025.pdf",
+      "https://www.miraeassetmf.co.in/docs/default-source/sid/14-sid---mirae-asset-elss-tax-saver-fund_sv_sept2025.pdf"
+    ],
+    "riskometer": "Moderately High",
+    "category": "ELSS (Equity Linked Savings Scheme)",
+    "exit_load": "Nil (units are locked in for 3 years)",
+    "min_sip": "Rs. 99 and in multiples of Rs. 500",
+    "min_lumpsum": "Rs. 500 and in multiples of Rs. 500"
+  },
+  {
+    "scheme_name": "Mirae Asset Liquid Fund",
+    "source_id": "src_008",
+    "source_url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/fixed-income/mirae-asset-liquid-fund",
+    "source_type": "amc",
+    "description": "Mirae Asset — Liquid Fund scheme page: expense ratio 0.15% Direct, benchmark Nifty Liquid Index A-I",
+    "fetched_at": "2026-04-08T20:10:48.325769+00:00",
+    "expense_ratio": "2.00%",
+    "min_sip": "99",
+    "benchmark": "NIFTY Liquid Index A-I (TRI",
+    "all_source_urls": [
+      "https://www.miraeassetmf.co.in/mutual-fund-scheme/fixed-income/mirae-asset-liquid-fund",
+      "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/24-kim-mirae-asset-liquid-fund_sept2025.pdf",
+      "https://www.miraeassetmf.co.in/docs/default-source/sid/24-sid-mirae-asset-liquid-fund_sept2025.pdf"
+    ],
+    "riskometer": "Moderate Credit Risk, Relatively Low Interest Rate Risk (Class B-I)",
+    "category": "Liquid Fund",
+    "exit_load": "Graded exit load for redemptions within 7 days (Day 1: 0.0070% to Day 7: 0.0010%); NIL from Day 8 onwards",
+    "lock_in": "None",
+    "min_lumpsum": "Rs. 5,000 and in multiples of Re. 1"
+  },
+  {
+    "scheme_name": "Mirae Asset Flexi Cap Fund",
+    "source_id": "src_009",
+    "source_url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-flexi-cap-fund",
+    "source_type": "amc",
+    "description": "Mirae Asset — Flexi Cap Fund scheme page: benchmark Nifty 500 TRI, min SIP ₹99",
+    "fetched_at": "2026-04-08T20:10:50.864879+00:00",
+    "expense_ratio": "2.25%",
+    "exit_load": "1%",
+    "min_sip": "99",
+    "benchmark": "AMFI Tier I benchmark: NIFTY 500 TRI (Total Return Index",
+    "all_source_urls": [
+      "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-flexi-cap-fund",
+      "https://www.miraeassetmf.co.in/docs/default-source/application-form-kim/15-kim---mirae-asset-flexi-cap-fund_sept2025.pdf",
+      "https://www.miraeassetmf.co.in/docs/default-source/sid/15-sid-mirae-asset-flexi-cap-fund_sept2025.pdf"
+    ],
+    "riskometer": "Very High",
+    "category": "Flexi Cap Fund",
+    "lock_in": "None",
+    "min_lumpsum": "Rs. 5,000 and in multiples of Re. 1"
+  }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "scheme_name": "Mirae Asset Large Cap Fund",
+    "note": "Values verified from official Mirae Asset scheme page (miraeassetmf.co.in)",
+    "riskometer": "Very High",
+    "category": "Large Cap Fund",
+    "exit_load": "1% if redeemed within 1 year (365 days); NIL after 1 year",
+    "lock_in": "None",
+    "min_sip": "Rs. 99 and in multiples of Re. 1",
+    "min_lumpsum": "Rs. 1,000 and in multiples of Re. 1"
+  },
+  {
+    "scheme_name": "Mirae Asset ELSS Tax Saver Fund",
+    "note": "Values verified from official Mirae Asset scheme page (miraeassetmf.co.in)",
+    "riskometer": "Moderately High",
+    "category": "ELSS (Equity Linked Savings Scheme)",
+    "exit_load": "Nil (units are locked in for 3 years)",
+    "lock_in": "3 years (mandatory statutory lock-in under Section 80C)",
+    "min_sip": "Rs. 99 and in multiples of Rs. 500",
+    "min_lumpsum": "Rs. 500 and in multiples of Rs. 500"
+  },
+  {
+    "scheme_name": "Mirae Asset Liquid Fund",
+    "note": "Values verified from official Mirae Asset scheme page (miraeassetmf.co.in)",
+    "riskometer": "Moderate Credit Risk, Relatively Low Interest Rate Risk (Class B-I)",
+    "category": "Liquid Fund",
+    "exit_load": "Graded exit load for redemptions within 7 days (Day 1: 0.0070% to Day 7: 0.0010%); NIL from Day 8 onwards",
+    "lock_in": "None",
+    "expense_ratio": "0.15% per annum (Direct Plan); 0.25% per annum (Regular Plan)",
+    "min_sip": "Not applicable (Liquid Fund — lumpsum preferred)",
+    "min_lumpsum": "Rs. 5,000 and in multiples of Re. 1"
+  },
+  {
+    "scheme_name": "Mirae Asset Flexi Cap Fund",
+    "note": "Values verified from official Mirae Asset scheme page (miraeassetmf.co.in)",
+    "riskometer": "Very High",
+    "category": "Flexi Cap Fund",
+    "exit_load": "1% if redeemed within 1 year (365 days); NIL after 1 year",
+    "lock_in": "None",
+    "min_sip": "Rs. 99 and in multiples of Re. 1 (monthly/quarterly minimum Rs. 1,000)",
+    "min_lumpsum": "Rs. 5,000 and in multiples of Re. 1"
+  }
+]

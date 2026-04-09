@@ -1,0 +1,86 @@
+{
+  "passed": 7,
+  "failed": 3,
+  "tests": [
+    {
+      "test": "Large Cap \u2014 expense ratio",
+      "status": "PASS",
+      "similarity": 0.658,
+      "scheme": "Mirae Asset Large Cap Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, min_lumpsum, benchmark, riskometer, lock_in",
+      "fact_match": true
+    },
+    {
+      "test": "Large Cap \u2014 exit load",
+      "status": "FAIL",
+      "similarity": 0.6642,
+      "scheme": "Mirae Asset ELSS Tax Saver Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, lock_in, benchmark, riskometer",
+      "fact_match": true
+    },
+    {
+      "test": "ELSS \u2014 lock-in period",
+      "status": "PASS",
+      "similarity": 0.7075,
+      "scheme": "Mirae Asset ELSS Tax Saver Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, lock_in, benchmark, riskometer",
+      "fact_match": true
+    },
+    {
+      "test": "ELSS \u2014 minimum SIP",
+      "status": "PASS",
+      "similarity": 0.7038,
+      "scheme": "Mirae Asset ELSS Tax Saver Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, lock_in, benchmark, riskometer",
+      "fact_match": true
+    },
+    {
+      "test": "Liquid Fund \u2014 exit load (graded)",
+      "status": "FAIL",
+      "similarity": 0.7007,
+      "scheme": "Mirae Asset ELSS Tax Saver Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, lock_in, benchmark, riskometer",
+      "fact_match": true
+    },
+    {
+      "test": "Liquid Fund \u2014 benchmark",
+      "status": "PASS",
+      "similarity": 0.703,
+      "scheme": "Mirae Asset Liquid Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, benchmark, riskometer",
+      "fact_match": true
+    },
+    {
+      "test": "Flexi Cap \u2014 riskometer",
+      "status": "PASS",
+      "similarity": 0.748,
+      "scheme": "Mirae Asset Flexi Cap Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, benchmark, riskometer",
+      "fact_match": true
+    },
+    {
+      "test": "Flexi Cap \u2014 minimum lumpsum",
+      "status": "PASS",
+      "similarity": 0.7199,
+      "scheme": "Mirae Asset Flexi Cap Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, benchmark, riskometer",
+      "fact_match": false
+    },
+    {
+      "test": "General \u2014 capital gains statement download",
+      "status": "FAIL",
+      "similarity": 0.4722,
+      "scheme": "Mirae Asset Flexi Cap Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, benchmark, riskometer",
+      "fact_match": false
+    },
+    {
+      "test": "Large Cap \u2014 benchmark index",
+      "status": "PASS",
+      "similarity": 0.7075,
+      "scheme": "Mirae Asset Large Cap Fund",
+      "fact_types": "expense_ratio, exit_load, min_sip, min_lumpsum, benchmark, riskometer, lock_in",
+      "fact_match": true
+    }
+  ]
+}

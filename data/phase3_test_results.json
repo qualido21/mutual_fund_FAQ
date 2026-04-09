@@ -1,0 +1,96 @@
+{
+  "passed": 10,
+  "failed": 0,
+  "tests": [
+    {
+      "test": "Factual \u2014 exit load (Large Cap)",
+      "query": "What is the exit load for Mirae Asset Large Cap Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "scheme": "Mirae Asset ELSS Tax Saver Fund",
+      "chunks": 3
+    },
+    {
+      "test": "Factual \u2014 lock-in (ELSS)",
+      "query": "What is the lock-in period for Mirae Asset ELSS Tax Saver Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "scheme": "Mirae Asset ELSS Tax Saver Fund",
+      "chunks": 3
+    },
+    {
+      "test": "Factual \u2014 min SIP (ELSS)",
+      "query": "What is the minimum SIP amount for Mirae Asset ELSS?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "scheme": "Mirae Asset ELSS Tax Saver Fund",
+      "chunks": 3
+    },
+    {
+      "test": "Factual \u2014 benchmark (Liquid)",
+      "query": "What is the benchmark index for Mirae Asset Liquid Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "scheme": "Mirae Asset Liquid Fund",
+      "chunks": 3
+    },
+    {
+      "test": "Factual \u2014 riskometer (Flexi Cap)",
+      "query": "What is the riskometer rating of Mirae Asset Flexi Cap Fund?",
+      "status": "PASS",
+      "type": "answer",
+      "reason": null,
+      "scheme": "Mirae Asset Flexi Cap Fund",
+      "chunks": 3
+    },
+    {
+      "test": "Advisory \u2014 should I invest",
+      "query": "Should I invest in Mirae Asset Large Cap Fund?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "advisory",
+      "scheme": null,
+      "chunks": null
+    },
+    {
+      "test": "Advisory \u2014 fund comparison",
+      "query": "Which is a better fund: Large Cap or ELSS?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "advisory",
+      "scheme": null,
+      "chunks": null
+    },
+    {
+      "test": "Advisory \u2014 stop SIP recommendation",
+      "query": "Is it a good time to stop my SIP?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "advisory",
+      "scheme": null,
+      "chunks": null
+    },
+    {
+      "test": "PII \u2014 PAN number",
+      "query": "My PAN is ABCDE1234F, what is my exit load?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "pii_pan",
+      "scheme": null,
+      "chunks": null
+    },
+    {
+      "test": "Out of scope \u2014 FD rate",
+      "query": "What is the current FD interest rate in SBI?",
+      "status": "PASS",
+      "type": "refusal",
+      "reason": "out_of_scope",
+      "scheme": null,
+      "chunks": null
+    }
+  ]
+}
