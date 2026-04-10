@@ -23,18 +23,27 @@ const OUT_OF_SCOPE_PHRASES = [
 ]
 
 const FACTUAL_SIGNALS = [
+  // Scheme-level facts
   'expense ratio', 'exit load', 'ter ', 'sip', 'lumpsum', 'lock-in',
   'lock in', 'benchmark', 'riskometer', 'category', 'minimum investment',
   'capital gains', 'account statement', 'nav', 'aum', 'fund manager',
   'dividend', 'growth option', 'idcw', 'direct plan', 'regular plan',
   'amfi', 'sebi', 'mirae', 'kim ', 'scheme information',
+  // Conceptual / definitional
+  'what is', 'what are', 'what does', 'explain', 'define', 'definition',
+  'how does', 'how do', 'how is', 'how are', 'how to',
+  'types of', 'type of', 'meaning of', 'difference between',
+  'mutual fund', 'scheme', 'kyc', 'elss', 'flexi cap', 'large cap',
+  'mid cap', 'small cap', 'liquid fund', 'debt fund', 'equity fund',
+  'hybrid fund', 'index fund', 'etf', 'folio', 'units',
+  'redemption', 'subscription', 'isin', 'fact sheet',
 ]
 
 const CLASSIFIER_PROMPT =
   'Classify this mutual fund question. Reply with exactly one word: FACTUAL, ADVISORY, or OUT_OF_SCOPE.\n' +
-  'FACTUAL = asks for a specific fund fact (expense ratio, exit load, SIP amount, lock-in, benchmark, riskometer, etc.).\n' +
-  'ADVISORY = asks for investment opinion, recommendation, or comparison.\n' +
-  'OUT_OF_SCOPE = not about mutual funds.'
+  'FACTUAL = any question about mutual funds: definitions, concepts, how things work, specific fund facts (expense ratio, exit load, NAV, SIP, lock-in, KYC, benchmark, riskometer, ELSS, etc.).\n' +
+  'ADVISORY = asks for investment opinion, recommendation, which fund to pick, or whether to invest now.\n' +
+  'OUT_OF_SCOPE = completely unrelated to mutual funds (crypto, stocks, insurance, loans, bank FDs, etc.).'
 
 export async function classify(query: string, openai: OpenAI): Promise<Intent> {
   const q = query.toLowerCase()

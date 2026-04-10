@@ -298,5 +298,151 @@
     ],
     "fetched_at": "2026-04-09T19:47:11.752413+00:00",
     "content_hash": "sha256:e671235ac8afb5989b99353050de18e0f0ad3f290145a208650beb2e8963982c"
+  },
+  {
+    "id": "src_019",
+    "url": "https://www.amfiindia.com/mutual-fund",
+    "type": "html",
+    "source_type": "amfi",
+    "scheme": null,
+    "description": "AMFI — What is a Mutual Fund: definition, how it works, structure, benefits",
+    "fact_types": [
+      "general",
+      "definition"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.761655+00:00"
+  },
+  {
+    "id": "src_020",
+    "url": "https://www.amfiindia.com/mutual-fund-sahi-hai",
+    "type": "html",
+    "source_type": "amfi",
+    "scheme": null,
+    "description": "AMFI — SIP and investment basics: how SIP works, rupee cost averaging, compounding",
+    "fact_types": [
+      "general",
+      "min_sip"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763043+00:00"
+  },
+  {
+    "id": "src_021",
+    "url": "https://www.amfiindia.com/investor/mutual-fund-categories",
+    "type": "html",
+    "source_type": "amfi",
+    "scheme": null,
+    "description": "AMFI — SEBI mutual fund categories: equity, debt, hybrid, solution-oriented, other",
+    "fact_types": [
+      "general",
+      "category"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763076+00:00"
+  },
+  {
+    "id": "src_022",
+    "url": "https://investor.sebi.gov.in/mutual-funds/mutual-fund-basics",
+    "type": "html",
+    "source_type": "sebi",
+    "scheme": null,
+    "description": "SEBI — Mutual fund basics: structure, regulation, investor protection",
+    "fact_types": [
+      "general",
+      "definition"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763087+00:00"
+  },
+  {
+    "id": "src_023",
+    "url": "https://investor.sebi.gov.in/mutual-funds/how-to-invest",
+    "type": "html",
+    "source_type": "sebi",
+    "scheme": null,
+    "description": "SEBI — How to invest in mutual funds: KYC, modes of investment, SIP, lumpsum",
+    "fact_types": [
+      "general",
+      "min_sip"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763094+00:00"
+  },
+  {
+    "id": "src_024",
+    "url": "https://investor.sebi.gov.in/mutual-funds/risks-in-mutual-funds",
+    "type": "html",
+    "source_type": "sebi",
+    "scheme": null,
+    "description": "SEBI — Risks in mutual funds: market risk, credit risk, interest rate risk, liquidity risk",
+    "fact_types": [
+      "general",
+      "riskometer"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763100+00:00"
+  },
+  {
+    "id": "src_025",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-mid-cap-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Mid Cap Fund",
+    "description": "Mirae Asset — Mid Cap Fund scheme page: NAV, benchmark Nifty Midcap 150 TRI, riskometer, SIP",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763107+00:00"
+  },
+  {
+    "id": "src_026",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-emerging-bluechip-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Emerging Bluechip Fund",
+    "description": "Mirae Asset — Emerging Bluechip Fund (Large & Mid Cap): benchmark Nifty LargeMidcap 250 TRI",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763113+00:00"
+  },
+  {
+    "id": "src_027",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-focused-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Focused Fund",
+    "description": "Mirae Asset — Focused Fund: max 30 stocks, benchmark Nifty 500 TRI",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763119+00:00"
+  },
+  {
+    "id": "src_028",
+    "url": "https://www.miraeassetmf.co.in/mutual-fund-scheme/equity-fund/mirae-asset-small-cap-fund",
+    "type": "html",
+    "source_type": "amc",
+    "scheme": "Mirae Asset Small Cap Fund",
+    "description": "Mirae Asset — Small Cap Fund: benchmark Nifty Smallcap 250 TRI, very high risk",
+    "fact_types": [
+      "expense_ratio",
+      "exit_load",
+      "min_sip",
+      "benchmark",
+      "riskometer",
+      "category"
+    ],
+    "fetched_at": "2026-04-10T18:00:33.763125+00:00"
   }
 ]

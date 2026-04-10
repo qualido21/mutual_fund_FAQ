@@ -14,7 +14,7 @@ export type { GeneratorResult } from './generator'
 
 const REFUSAL_MESSAGES: Record<string, string> = {
   advisory:     'I can only share factual information about mutual funds. For investment advice, please consult a SEBI-registered financial advisor.',
-  out_of_scope: 'This question is outside the scope of mutual fund facts. I can help with expense ratios, exit loads, SIP amounts, lock-in periods, and similar factual queries.',
+  out_of_scope: 'This question is outside the scope of mutual funds. I can answer questions about mutual fund concepts, KYC, NAV, SIP, expense ratios, exit loads, ELSS, and specific Mirae Asset scheme facts.',
   no_context:   'I don\'t have verified information on this from official sources.',
   pii_pan:      'Please do not share personal information like your PAN card number.',
   pii_phone:    'Please do not share personal information like your phone number.',
